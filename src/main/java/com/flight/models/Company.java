@@ -21,11 +21,18 @@ import javax.persistence.OneToMany;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flight.enumerations.CompanyName;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author VINCENT
  *
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Company {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,99 +53,4 @@ public class Company {
   @ElementCollection
   @CollectionTable(name = "inflights_infos", joinColumns = @JoinColumn(name = "company_id"))
   private Set<InflightInfo> inflightInfos;
-
-/**
- * 
- */
-public Company() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-
-/**
- * @param idCompany
- * @param companyName
- * @param flights
- * @param cabinDetails
- * @param inflightInfos
- */
-public Company(Long idCompany, com.flight.enumerations.CompanyName companyName, Set<Flight> flights,
-		Set<CabinDetail> cabinDetails, Set<InflightInfo> inflightInfos) {
-	super();
-	this.idCompany = idCompany;
-	CompanyName = companyName;
-	this.flights = flights;
-	this.cabinDetails = cabinDetails;
-	this.inflightInfos = inflightInfos;
-}
-
-/**
- * @return the idCompany
- */
-public Long getIdCompany() {
-	return idCompany;
-}
-
-/**
- * @param idCompany the idCompany to set
- */
-public void setIdCompany(Long idCompany) {
-	this.idCompany = idCompany;
-}
-
-/**
- * @return the companyName
- */
-public CompanyName getCompanyName() {
-	return CompanyName;
-}
-
-/**
- * @param companyName the companyName to set
- */
-public void setCompanyName(CompanyName companyName) {
-	CompanyName = companyName;
-}
-
-/**
- * @return the flights
- */
-public Set<Flight> getFlights() {
-	return flights;
-}
-
-/**
- * @param flights the flights to set
- */
-public void setFlights(Set<Flight> flights) {
-	this.flights = flights;
-}
-
-/**
- * @return the cabinDetails
- */
-public Set<CabinDetail> getCabinDetails() {
-	return cabinDetails;
-}
-
-/**
- * @param cabinDetails the cabinDetails to set
- */
-public void setCabinDetails(Set<CabinDetail> cabinDetails) {
-	this.cabinDetails = cabinDetails;
-}
-
-/**
- * @return the inflightInfos
- */
-public Set<InflightInfo> getInflightInfos() {
-	return inflightInfos;
-}
-
-/**
- * @param inflightInfos the inflightInfos to set
- */
-public void setInflightInfos(Set<InflightInfo> inflightInfos) {
-	this.inflightInfos = inflightInfos;
-}
 }

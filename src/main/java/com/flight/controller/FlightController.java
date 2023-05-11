@@ -94,7 +94,9 @@ public class FlightController {
 
   @GetMapping("/allFlights")
   public ResponseEntity<List<FlightDto>> getAllFlights() {
-	List<FlightDto> flights = flightService.getAllFlights().stream().map(flight -> modelMapper.map(flight, FlightDto.class)).collect(Collectors.toList());
+	List<FlightDto> flights = flightService.getAllFlights().stream()
+			.map(flight -> modelMapper.map(flight, FlightDto.class))
+			.collect(Collectors.toList());
     return new ResponseEntity<List<FlightDto>>(flights, new HttpHeaders(), HttpStatus.OK);
   }
   
