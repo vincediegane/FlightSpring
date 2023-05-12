@@ -4,13 +4,13 @@
 package com.flight.service.impl;
 
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.flight.models.Flight;
-import com.flight.models.FlightCriteria;
+//import com.flight.models.FlightCriteria;
 import com.flight.repository.IFlightRepository;
 import com.flight.service.IFlightService;
 
