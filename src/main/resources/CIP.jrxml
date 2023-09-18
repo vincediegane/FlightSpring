@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cip" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="01b26927-3c31-4702-826e-a4f18162ad55">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="records" uuid="865ea1dc-6c5e-4522-a05d-2bb4aba566af">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="reportPlus"/>
+		<queryString language="xPath">
+			<![CDATA[/REPONSE/DETAILREP/CIP/RecordList]]>
+		</queryString>
+		<field name="date" class="java.lang.String">
+			<fieldDescription><![CDATA[date]]></fieldDescription>
+		</field>
+		<field name="score" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[score]]></fieldDescription>
+		</field>
+		<field name="probabilityOfDefault" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[probabilityOfDefault]]></fieldDescription>
+		</field>
+		<field name="grade" class="java.lang.String">
+			<fieldDescription><![CDATA[grade]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="creditInfoResponse" class="ma.sg.df.loan.dto.creditinfo.response.ReponseDTO">
+		<fieldDescription><![CDATA[creditInfoResponse]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="572" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="60" width="535" height="19" forecolor="#000000" uuid="3eb95f80-7d70-400d-be2d-829b219771cf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<pen lineColor="#000000"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tableau de bord]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Transparent" x="23" y="80" width="532" height="80" backcolor="#FFFFFF" uuid="f00e66e1-5629-42dd-bd18-59e23a198f41">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineColor="#E0E2E2"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="-3" y="0" width="520" height="80" forecolor="#B82312" backcolor="#FFFFFF" uuid="2261a810-5955-4a12-95cc-f59c6b2190b2">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.tabStopWidth" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#E0E2E2"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None">
+						<font size="12"/>
+						<paragraph tabStopWidth="0"/>
+					</textElement>
+					<text><![CDATA[ Creditinfo score]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="54" y="40" width="103" height="18" uuid="3849edb5-fdf4-4b0c-9a51-a8c9604a379e"/>
+					<textElement>
+						<font size="8"/>
+						<paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> record.getScore().intValue() >= 684 ? "Risque trés faible" : record.getScore().intValue() < 684 && record.getScore().intValue() > 624 ? "Risque faible" : record.getScore().intValue() <= 624 && record.getScore().intValue() >= 584 ? "Risque moyen" : record.getScore().intValue() < 584 && record.getScore().intValue() > 504 ? "Risque élevé" : record.getScore().intValue() <= 504 ? "Risque trés élevé" : "").collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+				</textField>
+				<rectangle radius="3">
+					<reportElement x="160" y="39" width="30" height="25" backcolor="#FFFFFF" uuid="6de775b1-7389-4ef9-bd25-1b86b50236de">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="1.0" lineColor="#D1C9C9"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="194" y="40" width="50" height="18" uuid="4ea300ef-af52-4633-bf54-837fbc13afba"/>
+					<textElement>
+						<font size="8"/>
+						<paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+					</textElement>
+					<text><![CDATA[Tendance]]></text>
+				</staticText>
+				<rectangle radius="3">
+					<reportElement x="310" y="39" width="30" height="25" backcolor="#FFFFFF" uuid="11b61103-14d2-4543-8c6b-3f2ea5c60842">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="1.0" lineColor="#D1CDCD"/>
+					</graphicElement>
+				</rectangle>
+				<textField>
+					<reportElement x="312" y="38" width="25" height="20" uuid="af5af315-0e88-43b5-ae9c-4329432b4615"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record -> record.getScore()).collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="344" y="40" width="50" height="21" uuid="331597a4-9294-4b89-ba46-dbcbdeefd743"/>
+					<textElement>
+						<font size="8"/>
+						<paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+					</textElement>
+					<text><![CDATA[Score CIP]]></text>
+				</staticText>
+				<line>
+					<reportElement x="10" y="24" width="480" height="1" forecolor="#EBE8E8" uuid="2cb43e82-3ae0-4d89-9471-b7d6a60a3e78"/>
+				</line>
+				<image hAlign="Center" vAlign="Top">
+					<reportElement x="162" y="42" width="27" height="20" uuid="cf10c6b2-9fa5-4e55-a1ce-8a5fd4c23934"/>
+					<imageExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record ->
+	record.getScore().intValue() >= 454 && record.getScore().intValue() < 584 ? $P{REPORT_PARAMETERS_MAP}.get("img_redArrow_stream") : record.getScore().intValue() >= 584 && record.getScore().intValue() <= 624 ? $P{REPORT_PARAMETERS_MAP}.get("img_yellowArrow_stream") : record.getScore().intValue() > 624 ? $P{REPORT_PARAMETERS_MAP}.get("img_greenArrow_stream") : "").collect(java.util.stream.Collectors.toList()).get(0)]]></imageExpression>
+				</image>
+				<frame>
+					<reportElement x="20" y="39" width="30" height="25" uuid="4f207877-35ea-4613-b1da-a84181f81e42">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<frame>
+						<reportElement x="0" y="0" width="30" height="25" uuid="4aa64484-1463-4928-84a6-4fddb8e92578">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="30" height="25" backcolor="#BD2615" uuid="a033b3f3-3804-4563-82de-235649d70cb0">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() <= 504
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="30" height="25" uuid="d15dbbff-4977-4b56-9706-37a1ff11ce98">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="30" height="25" backcolor="#D4928C" uuid="0b765b86-9ff9-40a7-b7ed-6e204c709a37">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() < 584 && record.getScore().intValue() > 504
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="30" height="25" uuid="fd003148-5790-439e-bb67-cc011d63edac">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="30" height="25" backcolor="#EDBA11" uuid="9717fc9a-05b4-41c0-b023-f880efdb03ad">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() <= 624 && record.getScore().intValue() >= 584
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="30" height="25" uuid="ee1c03af-14d9-480a-8df0-028de2752dfd">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="30" height="25" backcolor="#B4CCC0" uuid="8efab15c-4ee8-4b48-a7bb-e7f9b605bc1e">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() < 684 && record.getScore().intValue() > 624
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="30" height="25" uuid="3a31951f-78c7-46bd-b9ef-fe83bf94960f">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="30" height="25" backcolor="#206341" uuid="78739af0-a7f8-4566-ac6f-6cebbc834e03">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() >= 684
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+						<textField>
+							<reportElement x="3" y="3" width="25" height="20" forecolor="#FFFFFF" uuid="3b313d9e-407d-4aa5-ad37-db8855fbb4a0">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<textElement textAlignment="Center">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record -> record.getGrade()).collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+						</textField>
+					</frame>
+				</frame>
+			</frame>
+			<staticText>
+				<reportElement x="20" y="37" width="535" height="23" forecolor="#C40F11" uuid="205def6e-cf68-472f-bd99-74c6f6e1797e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<pen lineColor="#000000"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Rapport Creditinfo Plus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="207" width="90" height="23" uuid="17745ae7-8b67-41a7-a29a-953640838965">
+					<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().isEmpty() ? Boolean.FALSE : Boolean.TRUE]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Creditinfo Score]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="21" y="234" width="518" height="64" uuid="80d0a885-9f63-490d-8fed-6589ca7cba93"/>
+				<box>
+					<pen lineColor="#E6E6E6"/>
+				</box>
+				<rectangle>
+					<reportElement x="0" y="1" width="517" height="20" backcolor="#E6E6E6" uuid="9c008dd8-5db5-4dba-824d-2bd2c9b7da48"/>
+					<graphicElement>
+						<pen lineColor="#E6E6E6"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="1" width="140" height="20" forecolor="#9E9D9D" uuid="7d9cb102-1298-4160-92aa-d8f1d84a1ac3">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[INFOS CREDITINFO SCORE]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="0" y="21" width="140" height="40" backcolor="#F5F5F5" uuid="f9771fa7-8d40-4bbc-bdeb-1dcbc5975141">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#F5F5F5"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement x="140" y="21" width="140" height="36" backcolor="#FFFFFF" uuid="0f684217-50a7-4ea0-bf3a-19c3e04f6747"/>
+					<graphicElement>
+						<pen lineColor="#E6E6E6"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement x="140" y="41" width="140" height="20" backcolor="#FFFFFF" uuid="8350cb3f-bf8e-42e5-ba8f-5fa7630585dd">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#E6E6E6"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement x="280" y="21" width="90" height="40" backcolor="#F5F5F5" uuid="3e3a51fb-9819-46bb-9344-68420c3ac8ba">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#F5F5F5"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement x="371" y="23" width="146" height="20" backcolor="#FFFFFF" uuid="49cbbf77-5deb-48b6-8285-48a636b7bd3b">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#E6E6E6"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement x="370" y="44" width="147" height="17" backcolor="#FFFFFF" uuid="e96a8a55-1f8b-4e45-8e1a-f6cd94c09c57">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#E6E6E6"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="21" width="140" height="20" uuid="0d0cf18f-5247-4eb6-846d-37cf113cb318">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Score]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="41" width="140" height="20" uuid="866f7bf7-5d13-4d9b-88f9-0e19c7a8c42c">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Probabilité de défaut (%)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="140" y="21" width="140" height="20" uuid="c5467e5c-a79e-4da6-b30f-5817147c03b5">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record -> record.getScore()).collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="140" y="41" width="33" height="20" uuid="2fabdfd6-1787-43ac-915b-7a93ea01cff5">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record -> record.getProbabilityOfDefault() + " %").collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+				</textField>
+				<image hAlign="Center">
+					<reportElement x="185" y="43" width="32" height="16" uuid="45f13d5d-c7fc-4a24-8b0e-eb6adb6b46f0">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<imageExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record ->
+	record.getScore().intValue() >= 454 && record.getScore().intValue() < 584 ? $P{REPORT_PARAMETERS_MAP}.get("img_redArrow_stream") : record.getScore().intValue() >= 584 && record.getScore().intValue() <= 624 ? $P{REPORT_PARAMETERS_MAP}.get("img_yellowArrow_stream") : record.getScore().intValue() > 624 ? $P{REPORT_PARAMETERS_MAP}.get("img_greenArrow_stream") : "").collect(java.util.stream.Collectors.toList()).get(0)]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="280" y="24" width="90" height="20" uuid="1e634de7-1237-4c6c-820e-2a22c489af88">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Classe de risque]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="44" width="90" height="20" uuid="65fe80d6-db59-4409-99d1-5e93a946f5ed">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Description]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="371" y="41" width="146" height="20" uuid="5ce2dfce-c66b-4278-8203-a166223ecdfc">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> record.getScore().intValue() >= 684 ? "Risque trés faible" : record.getScore().intValue() < 684 && record.getScore().intValue() > 624 ? "Risque faible" : record.getScore().intValue() <= 624 && record.getScore().intValue() >= 584 ? "Risque moyen" : record.getScore().intValue() < 584 && record.getScore().intValue() > 504 ? "Risque élevé" : record.getScore().intValue() <= 504 ? "Risque trés élevé" : "").collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="174" y="41" width="13" height="20" uuid="928fe56e-f89a-4b6f-a89d-1932653b88bc">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[%]]></text>
+				</staticText>
+				<frame>
+					<reportElement x="380" y="23" width="27" height="19" uuid="af98e017-3866-4427-b5ea-236ffbb538cb">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<frame>
+						<reportElement x="0" y="0" width="27" height="19" uuid="7c5b7b6f-fef1-4ad1-8ded-6e04d8c34149">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="27" height="19" backcolor="#BD2615" uuid="579c021c-18ba-4bec-b282-fafff2a04b7e">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() <= 504
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="27" height="19" uuid="8b14bb0d-621a-436c-8c17-f1a22421e035">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="27" height="19" backcolor="#D4928C" uuid="4d2b9acb-8bd5-43eb-bf20-bb804081e06d">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() < 584 && record.getScore().intValue() > 504
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="27" height="19" uuid="b0e5d578-9677-4215-a71f-b95bd87c4fa8">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="27" height="19" backcolor="#EDBA11" uuid="dd7386bc-70ce-4c5e-8f0c-72fdf0baede3">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() <= 624 && record.getScore().intValue() >= 584
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="27" height="19" uuid="cc9e0d01-eb9e-43f8-a00d-221515fcb50e">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="27" height="19" backcolor="#B4CCC0" uuid="cf7aeb37-3548-4a56-a951-04e945fcae57">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() < 684 && record.getScore().intValue() > 624
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+					</frame>
+					<frame>
+						<reportElement x="0" y="0" width="27" height="19" uuid="732819dc-dd83-4492-91b9-a6a32670773b">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<rectangle radius="3">
+							<reportElement x="0" y="0" width="27" height="19" backcolor="#206341" uuid="9199348c-97fc-474c-ae58-984964213b0b">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<printWhenExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream()
+.map((ma.sg.df.loan.dto.creditinfo.response.RecordDTO record) -> 
+ record.getScore().intValue() >= 684
+).collect(java.util.stream.Collectors.toList())
+.get(0)]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.0"/>
+							</graphicElement>
+						</rectangle>
+						<textField>
+							<reportElement x="3" y="1" width="22" height="20" forecolor="#FFFFFF" uuid="fe7ae1c6-8f09-4356-ae7f-6168ed0626c7">
+								<property name="com.jaspersoft.studio.unit.x" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<textElement textAlignment="Center">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{creditInfoResponse}.getDetailRep().getRecords().stream().map(record -> record.getGrade()).collect(java.util.stream.Collectors.toList()).get(0)]]></textFieldExpression>
+						</textField>
+					</frame>
+				</frame>
+			</frame>
+			<frame>
+				<reportElement x="18" y="340" width="518" height="91" uuid="77a51106-a47b-4a4f-ae37-6500836a0cf2">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<rectangle radius="3">
+					<reportElement x="57" y="41" width="385" height="10" forecolor="#CCCACA" backcolor="#DEDCDC" uuid="35221d13-b75d-4c04-9626-44fb30d77002"/>
+				</rectangle>
+				<ellipse>
+					<reportElement x="117" y="35" width="24" height="24" backcolor="#BD2615" uuid="99a51373-8f24-4ca7-8979-11f704933e55">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#BD2615"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="67" y="35" width="24" height="24" backcolor="#BD2615" uuid="55c20d38-3350-409a-91c3-5539dc7bad6e">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#BD2615"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="92" y="35" width="24" height="24" backcolor="#BD2615" uuid="aba2243a-a403-498f-a28e-daf4c15525d4">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#BD2615"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="142" y="35" width="24" height="24" backcolor="#D4928C" uuid="6829c8da-428d-42e5-a5c8-cdaafa61b9d3">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#B34A42"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="417" y="35" width="24" height="24" backcolor="#206341" uuid="8b5ab2da-55a6-40aa-bf71-f41241eb3b70">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#206341"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="167" y="35" width="24" height="24" backcolor="#D4928C" uuid="1bb18c09-f3f4-45b3-81b7-0e29563b1747">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#B34A42"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="192" y="35" width="24" height="24" backcolor="#D4928C" uuid="ec8d9988-372c-4f87-ab4d-2d9d2162772c">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#B34A42"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="217" y="35" width="24" height="24" backcolor="#EDBA11" uuid="d4640f8b-40ce-4cfe-9301-79921a60edb2">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#EDBA11"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="242" y="35" width="24" height="24" backcolor="#EDBA11" uuid="14dc7f57-8f44-423a-8d3a-c62c8cac9c91">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#EDBA11"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="268" y="35" width="24" height="24" backcolor="#E3C119" uuid="d6423c31-b8e4-4f82-877b-085a6366b1ce">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#EDBA11"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="292" y="35" width="24" height="24" backcolor="#B4CCC0" uuid="5ce6f645-f1f3-4798-af32-c89c6c7c2a9b">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#B4CCC0"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="317" y="35" width="24" height="24" backcolor="#B4CCC0" uuid="458af597-a992-4213-8188-46d2f79eb851">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#B4CCC0"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="342" y="35" width="24" height="24" backcolor="#B4CCC0" uuid="623fb8e6-9ead-48df-adcc-814e9b872edb">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#B4CCC0"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="367" y="35" width="24" height="24" backcolor="#206341" uuid="a38eb2ee-51d6-489a-90ba-156f68542802">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#206341"/>
+					</graphicElement>
+				</ellipse>
+				<ellipse>
+					<reportElement x="392" y="35" width="24" height="24" backcolor="#206341" uuid="d41deb2e-05ad-4fd6-a371-af1a00b7cf3b">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineColor="#206341"/>
+					</graphicElement>
+				</ellipse>
+				<staticText>
+					<reportElement x="73" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="5bc57fb5-7380-4a77-b8c0-7bcb26a089a5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[E3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="398" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="37f42954-8e61-4292-a519-afc096d519ef">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[A2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="372" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="2e9f2596-337a-4766-80f0-b44178725463"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[A3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="348" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="1a5f3076-b029-461a-a61e-86c03507a4ea"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[B1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="323" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="b941c38e-5173-4a06-99a3-2ff3f0bbc751"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[B2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="298" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="4297b117-5224-4bc3-b7bf-f632558bec8b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[B3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="273" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="91de9647-57dd-4f75-8810-7c5abc78709b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[C1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="248" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="98ccce18-8c1e-4670-a948-911cb855a747"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[C2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="223" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="555637d0-3aac-4a88-bac2-2d2c8ac669ae"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[C3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="198" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="3804e90a-65c3-45b5-a285-ead3c6c9c95f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[D1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="173" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="729acab7-5393-41f6-ad33-4ea41893672e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[D2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="148" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="88d61bc0-7679-4a69-956d-44a0a68f2547"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[D3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="123" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="d83d8da5-75ff-4f1f-be07-01eb32a47815"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[E1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="97" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="1fd6ea9c-a5db-4747-903f-5e068a17ee77"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[E2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="423" y="38" width="11" height="15" forecolor="#FFFFFF" uuid="9654f822-b4ce-4f25-a804-9318065c4070"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[A1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="63" y="5" width="26" height="30" forecolor="#BD2615" uuid="938e5e8c-6628-4056-b555-a4cf1f92c43d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[454]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="413" y="5" width="26" height="30" forecolor="#206341" uuid="02d2b60c-d034-4085-86db-d30820e13682"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[900]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="364" y="5" width="26" height="30" forecolor="#206341" uuid="a57b61cc-791a-4b8c-bc23-8d9470166d83"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[684]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="314" y="5" width="26" height="30" forecolor="#B4CCC0" uuid="40ce25c1-0910-4fe7-b3e9-2f4620f64ec2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[654]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="264" y="5" width="26" height="30" forecolor="#EDBA11" uuid="8737868c-aa0a-4d66-800b-fda5d3eeb2c1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[624]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="215" y="5" width="26" height="30" forecolor="#EDBA11" uuid="5100307e-4223-4d63-a1da-d86f7b71547a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[584]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="116" y="6" width="26" height="30" forecolor="#BD2615" uuid="448a099f-efa3-49ef-969f-6cf76274abc1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[504]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="164" y="5" width="26" height="30" forecolor="#D4928C" uuid="bb6589e9-2b44-44ab-a570-93562439daad"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[544]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="69" y="71" width="71" height="20" forecolor="#BD2615" uuid="45d650ed-9a10-4e0a-ab12-76ce4d7955b2"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Risque trés élevé]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="144" y="71" width="71" height="20" forecolor="#D4928C" uuid="45ae2aa2-167a-41d4-9de8-ba77de587ecd"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Risque élevé]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="220" y="71" width="71" height="20" forecolor="#EDBA11" uuid="cc0ba592-60c1-4ba1-97d4-d4b204640e7b"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Risque moyen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="292" y="71" width="71" height="20" forecolor="#B4CCC0" uuid="c4411e74-75b6-4ee5-9f5a-82f3f14bba34"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Risque faible]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="367" y="71" width="71" height="20" forecolor="#206341" uuid="c921b7d8-9697-4437-8062-7d7d75687b1f"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Risque trés faible]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="120" y="460" width="430" height="78" uuid="b61b5b61-6920-42a5-90f9-b6032b324104">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<componentElement>
+					<reportElement mode="Transparent" x="0" y="0" width="430" height="100" uuid="f811df99-b6ad-4157-a818-42ed4b77c2f0"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal">
+						<datasetRun subDataset="records" uuid="30dc2e8a-06f9-4ecf-aa8d-66d5edd6fb95">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{creditInfoResponse}.getDetailRep().getRecords())]]></dataSourceExpression>
+						</datasetRun>
+						<jr:listContents height="100" width="33">
+							<textField>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="33" height="22" forecolor="#808080" backcolor="#E6E6E6" uuid="2500a411-7ad6-4148-958f-34dfae2c9346">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[java.time.LocalDate.parse($F{date}, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+.format(java.time.format.DateTimeFormatter.ofPattern("M/yyyy"))]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="22" width="33" height="22" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="2500a411-7ad6-4148-958f-34dfae2c9346">
+									<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="0.5" lineColor="#F5F5F5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{score}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="44" width="25" height="20" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="2500a411-7ad6-4148-958f-34dfae2c9346">
+									<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="0.5" lineColor="#F5F5F5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{probabilityOfDefault}]]></textFieldExpression>
+							</textField>
+							<frame>
+								<reportElement x="0" y="80" width="30" height="20" uuid="87534ff0-2710-4e4f-91f0-ee5f0fab6216"/>
+							</frame>
+							<staticText>
+								<reportElement mode="Opaque" x="24" y="44" width="6" height="22" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="288518a2-f10b-4272-94ee-6e53410d49e0">
+									<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[%]]></text>
+							</staticText>
+							<frame>
+								<reportElement mode="Opaque" x="0" y="66" width="33" height="22" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="3091586d-bafb-4447-84e0-cbcdd00c20e9">
+									<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="0.5" lineColor="#F5F5F5"/>
+								</box>
+								<frame>
+									<reportElement x="0" y="0" width="33" height="22" uuid="733e317f-b1af-478c-ade0-d877765c745a">
+										<property name="com.jaspersoft.studio.unit.x" value="px"/>
+										<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									</reportElement>
+									<rectangle radius="3">
+										<reportElement mode="Opaque" x="5" y="2" width="15" height="15" backcolor="#BD2615" uuid="9c0a2479-a116-41d3-add0-baf3af2570ba">
+											<property name="com.jaspersoft.studio.unit.x" value="px"/>
+											<property name="com.jaspersoft.studio.unit.y" value="px"/>
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<property name="com.jaspersoft.studio.unit.height" value="px"/>
+											<printWhenExpression><![CDATA[$F{score}.intValue() <= 504]]></printWhenExpression>
+										</reportElement>
+										<graphicElement>
+											<pen lineWidth="0.0"/>
+										</graphicElement>
+									</rectangle>
+								</frame>
+								<frame>
+									<reportElement x="0" y="0" width="33" height="22" uuid="241133d3-459f-4d18-8b92-09c1b52ed0c7">
+										<property name="com.jaspersoft.studio.unit.x" value="px"/>
+										<property name="com.jaspersoft.studio.unit.y" value="px"/>
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<rectangle radius="3">
+										<reportElement mode="Opaque" x="5" y="2" width="15" height="15" backcolor="#D4928C" uuid="92054e23-0a8f-4b7e-8b30-4302b23681d9">
+											<property name="com.jaspersoft.studio.unit.y" value="px"/>
+											<printWhenExpression><![CDATA[$F{score}.intValue() < 584 && $F{score}.intValue() > 504]]></printWhenExpression>
+										</reportElement>
+										<graphicElement>
+											<pen lineWidth="0.0"/>
+										</graphicElement>
+									</rectangle>
+								</frame>
+								<frame>
+									<reportElement x="0" y="0" width="33" height="22" uuid="e2cfc4c1-e7f7-4d74-b224-92d6553d3f20">
+										<property name="com.jaspersoft.studio.unit.x" value="px"/>
+										<property name="com.jaspersoft.studio.unit.y" value="px"/>
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<rectangle radius="3">
+										<reportElement mode="Opaque" x="5" y="2" width="15" height="15" backcolor="#EDBA11" uuid="8535f800-7636-45c8-bddb-b4128a61fecd">
+											<printWhenExpression><![CDATA[$F{score}.intValue() <= 624 && $F{score}.intValue() >= 584]]></printWhenExpression>
+										</reportElement>
+										<graphicElement>
+											<pen lineWidth="0.0"/>
+										</graphicElement>
+									</rectangle>
+								</frame>
+								<frame>
+									<reportElement x="0" y="0" width="33" height="22" uuid="2962fcb4-963d-4bb6-a8e3-86d384f05f9d">
+										<property name="com.jaspersoft.studio.unit.x" value="px"/>
+										<property name="com.jaspersoft.studio.unit.y" value="px"/>
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<rectangle radius="3">
+										<reportElement mode="Opaque" x="5" y="2" width="15" height="15" backcolor="#B4CCC0" uuid="d28b4aaa-7d85-456f-92bf-7252db3fd504">
+											<printWhenExpression><![CDATA[$F{score}.intValue() < 684 && $F{score}.intValue() > 624]]></printWhenExpression>
+										</reportElement>
+										<graphicElement>
+											<pen lineWidth="0.0"/>
+										</graphicElement>
+									</rectangle>
+								</frame>
+								<frame>
+									<reportElement x="0" y="0" width="33" height="22" uuid="bf737db3-5bd8-4528-9206-98608c8df035">
+										<property name="com.jaspersoft.studio.unit.x" value="px"/>
+										<property name="com.jaspersoft.studio.unit.y" value="px"/>
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<rectangle radius="3">
+										<reportElement mode="Opaque" x="5" y="2" width="15" height="15" backcolor="#206341" uuid="fda9ccf9-cb64-49b9-8169-bc9bd02fb7ec">
+											<printWhenExpression><![CDATA[$F{score}.intValue() >= 684]]></printWhenExpression>
+										</reportElement>
+										<graphicElement>
+											<pen lineWidth="0.0"/>
+										</graphicElement>
+									</rectangle>
+									<textField>
+										<reportElement x="7" y="4" width="15" height="15" forecolor="#FFFFFF" uuid="f169f031-81a3-4570-a8fb-c6f8e56b25bd">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<property name="com.jaspersoft.studio.unit.height" value="px"/>
+										</reportElement>
+										<textElement>
+											<font size="8" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+									</textField>
+								</frame>
+							</frame>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+			<frame>
+				<reportElement x="20" y="460" width="100" height="100" uuid="54e42c53-e4e8-40c9-84f2-d7c5d93ac83e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="100" height="22" forecolor="#808080" backcolor="#E6E6E6" uuid="489ff52c-75f5-4a82-ab34-fa0e6faa3e6b">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<pen lineColor="#E0E2E2"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[MOIS/ANNÉE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="0" y="22" width="100" height="22" forecolor="#000000" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="30da71b1-f3d1-4d9c-bc7e-3d4bdeb56ccf">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<pen lineColor="#E0E2E2"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Score CreditInfo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="0" y="44" width="100" height="22" forecolor="#000000" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="64d252ab-e9bc-4f1a-901d-6ebc7a85b2e6">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<pen lineColor="#E0E2E2"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Probabilité de defaut]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="0" y="66" width="100" height="22" forecolor="#000000" backcolor="rgba(245, 245, 245, 0.39215687)" uuid="2159896e-8196-4740-b292-b6403bab6919">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box leftPadding="5">
+						<pen lineColor="#E0E2E2"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#E0E2E2"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Classe de risque CIP]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>
